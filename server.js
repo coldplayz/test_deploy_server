@@ -127,12 +127,13 @@ app.use(function (err, req, res, next) {
 });
 
 // establish connections
+const HOST = process.env.NODE_ENV === 'production' ? '::' : '0.0.0.0';
 mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    app.listen(PORT, '0.0.0.0', () => console.log(`Listening on port ${PORT}`));
+    app.listen(PORT, HOST, () => console.log(`Listening on port ${PORT}`));
   })
   .catch((err) => console.log(err.message));
