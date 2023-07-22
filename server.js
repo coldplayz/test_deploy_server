@@ -127,7 +127,7 @@ app.use(function (err, req, res, next) {
 });
 
 // establish connections
-const HOST = process.env.NODE_ENV === 'production' ? '[::]' : '0.0.0.0';
+const HOST = process.env.NODE_ENV === 'production' ? '::' : '0.0.0.0';
 mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
