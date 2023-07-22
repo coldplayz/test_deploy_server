@@ -108,8 +108,10 @@ app.use(express.urlencoded({ extended: true }));
 // setup logger
 app.use(logger('dev'));
 
+// setup CORS
+const origin = process.env.NODE_ENV === 'production' ? `${process.env.CLIENT_HOST}:${process.env.CLIENT_PORT}` : 'localhost:3000';
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: `http://${origin}`,
   credentials: true,
   exposedHeaders: ['Set-Cookie'],
 }));
